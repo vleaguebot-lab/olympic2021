@@ -29,26 +29,47 @@ select2.sort()
 select3 = list(set(select3))
 select3.sort()
 
+language_round = {
+    'GoldMedalMatch-':'決勝-',
+    'BronzeMedalMatch-':'3位決定戦-',
+    'Semifinals-':'準決勝-',
+    'PreliminaryRound-':'予選ラウンド-',
+}
+
+language_stats = {
+    'ディグ':'Non-Scoring In-PlayDig',
+    'セット':'Non-Scoring In-PlaySet',
+    'サーブレシーブ成功率':'Non-Scoring Succ. %Reception',
+    'アタック効果率':'Scoring Eff. %Attack',
+    'ブロック':'Scoring In-PlayBlock',
+    'サーブ':'Scoring In-PlayServise'
+}
+
+for x in range(len(select2)):
+    for en, ja in language_round.items():
+        select2[x] = select2[x].replace(en, ja)
+
 option = st.sidebar.selectbox(
     '試合・チームを選択してください',
     select2
 )
 
-
 stats = st.sidebar.selectbox(
     'スタッツを選択してください',
-    select3
+    [x for x in language_stats.keys()]
 )
 # print(option.find('vs'))
-
 st.markdown('## *{}*'.format(option))
 
 st.markdown('## *{}*'.format(stats))
 
 st.markdown('### を選択しました。')
 
+for en, ja in language_round.items():
+    option = option.replace(ja, en)
+
 df1 = pd.read_csv(
-    '{}/stats/{}-{}.csv'.format(sex, option, stats),
+    '{}/stats/{}-{}.csv'.format(sex, option, language_stats[stats]),
     index_col=0
 )
 
@@ -56,7 +77,7 @@ df1 = pd.read_csv(
 #     '{}/stats/{}.csv'.format(sex,option)
 # ).iloc[:-1, :]
 df2 = pd.read_csv(
-    '{}/stats/{}-{}.csv'.format(sex, option, stats)
+    '{}/stats/{}-{}.csv'.format(sex, option, language_stats[stats])
 ).iloc[:-1, :]
 
 # st.dataframe(df.style.highlight_max(axis=0))
