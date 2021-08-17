@@ -4,13 +4,36 @@ import pandas as pd
 # from PIL import Image
 import glob
 
+language_sex = {'男子':'men', '女子':'women'}
+
+language_round = {
+    '3位決定戦-':'BronzeMedalMatch-',
+    '準々決勝-':'Quarterfinals-',
+    '準決勝-':'Semifinals-',
+    '決勝-':'GoldMedalMatch-',
+    '予選ラウンド-':'PreliminaryRound-',
+}
+
+language_stats = {
+    'ディグ':'Non-Scoring In-PlayDig',
+    'セット':'Non-Scoring In-PlaySet',
+    'サーブレシーブ成功率':'Non-Scoring Succ. %Reception',
+    'アタック効果率':'Scoring Eff. %Attack',
+    'ブロック':'Scoring In-PlayBlock',
+    'サーブ':'Scoring In-PlayServise'
+}
 
 st.title('Tokyo 2020 Olympic statics')
 
 sex = st.sidebar.selectbox(
     '男子or女子',
-    ['men', 'women']
+    language_sex.keys()
 )
+
+for ja, en in language_sex.items():
+    sex = sex.replace(ja, en)
+
+# print(sex)
 
 select = glob.glob('{}/stats/*.csv'.format(sex))
 select2 = []
@@ -29,24 +52,9 @@ select2.sort()
 select3 = list(set(select3))
 select3.sort()
 
-language_round = {
-    'GoldMedalMatch-':'決勝-',
-    'BronzeMedalMatch-':'3位決定戦-',
-    'Semifinals-':'準決勝-',
-    'PreliminaryRound-':'予選ラウンド-',
-}
-
-language_stats = {
-    'ディグ':'Non-Scoring In-PlayDig',
-    'セット':'Non-Scoring In-PlaySet',
-    'サーブレシーブ成功率':'Non-Scoring Succ. %Reception',
-    'アタック効果率':'Scoring Eff. %Attack',
-    'ブロック':'Scoring In-PlayBlock',
-    'サーブ':'Scoring In-PlayServise'
-}
 
 for x in range(len(select2)):
-    for en, ja in language_round.items():
+    for ja, en in language_round.items():
         select2[x] = select2[x].replace(en, ja)
 
 option = st.sidebar.selectbox(
@@ -65,7 +73,7 @@ st.markdown('## *{}*'.format(stats))
 
 st.markdown('### を選択しました。')
 
-for en, ja in language_round.items():
+for ja, en in language_round.items():
     option = option.replace(ja, en)
 
 df1 = pd.read_csv(
