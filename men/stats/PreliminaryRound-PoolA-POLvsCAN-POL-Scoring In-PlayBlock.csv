@@ -1,14 +1,14 @@
 No.,Name,Points,Errors,In-Play,Total Attempts,by Set
- 6,KUREK Bartosz,5.0,, 3,8,1.67
-15,KOCHANOWSKI Jakub,4.0,3,5,12,1.33
- 9,LEON VENERO Wilfredo,1.0,2,1,4,0.33
-11,DRZYZGA Fabian,1.0,2,1,4,0.33
-13,KUBIAK Michal,1.0,2,1,4,0.33
- 5,KACZMAREK Lukasz,1.0,, 1,2,0.33
-20,BIENIEK Mateusz,,- 3,3,6,0.0
-16,SEMENIUK Kamil,,-, 2,2,0.0
-1,NOWAKOWSKI Piotr,,-,, ,
-12,LOMACZ Grzegorz,,-,, ,
-14,SLIWKA Aleksander,,-,, ,
-17,ZATORSKI Pawel,,-,, ,
-ls,,13.0,12,17,42,4.33
+6,KUREK Bartosz,5,,3,8,1.67
+15,KOCHANOWSKI Jakub,4,3,5,12,1.33
+9,LEON VENERO Wilfredo,1,2,1,4,0.33
+11,DRZYZGA Fabian,1,2,1,4,0.33
+13,KUBIAK Michal,1,2,1,4,0.33
+5,KACZMAREK Lukasz,1,,1,2,0.33
+20,BIENIEK Mateusz,,3,3,6,0
+16,SEMENIUK Kamil,,,2,2,0
+1,NOWAKOWSKI Piotr,,,, ,
+12,LOMACZ Grzegorz,,,, ,
+14,SLIWKA Aleksander,,,, ,
+17,ZATORSKI Pawel,,,, ,
+ls,,13,12,17,42,4.33
